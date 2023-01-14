@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+
+    <p>This is a paragraph.</p>
+
+    <ul>
+        {% for pessoan in pessoans %}
+            <li>{{ pessoan.id }} - {{ pessoan.nome }} 
+                <a href="{% url 'editar' pessoan.id %}">Editor</a>
+                <a href="{% url 'delete' pessoan.id %}">Deleter</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <form action=" {% url 'salvar' %}" method="POST">
+        {% csrf_token %}
+        <input type="text" name="nome" >
+        <button type="submit">Salvar</button>
+    </form>
+
+</body>
+</html>
